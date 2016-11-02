@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   #default_scope { order('updated_at DESC') }
+  #
+  validates :name, presence: true
+  validates :name, uniqueness: true
 end
