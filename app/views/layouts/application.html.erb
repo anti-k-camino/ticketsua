@@ -7,6 +7,45 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav">
+                            
+                  <li><a href="http://www.thinknetica.com">Про Thinknetica</a></li>
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown">Про меня<b class="caret"></b></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="http://www.github.com/anti-k-camino">Мой гитхаб</a></li>   <li class="divider"></li>
+                        <li><a href="http://www.facebook.com">facebook</a></li>
+                        <li class="divider"></li>                        
+                     </ul>
+                  </li>
+               </ul>
+               <% if user_signed_in? %>
+                <ul class="nav navbar-nav navbar-right">                 
+                  
+                  <li><%= link_to 'Exit', destroy_user_session_path, method: :delete %></li>
+                </ul>                
+                <% end %>              
+             
+            </div>
+            <!-- /.navbar-collapse -->
+         </nav>
+      </div>
+   </div>
+</div>
+
+
+
+
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 

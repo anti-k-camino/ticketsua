@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   #default_scope { order('updated_at DESC') }
-  #
+  has_many :conversations, :foreign_key => :receiver_id
+  has_many :conversations, :foreign_key => :sender_id
+
   validates :name, presence: true
   validates :name, uniqueness: true
+  
 end
