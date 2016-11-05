@@ -1,3 +1,4 @@
 .panel
   p=user.name
   p=user.email
+  .block=link_to 'BLOCK', block_user_path(user.id), remote: :true,  method: :patch
