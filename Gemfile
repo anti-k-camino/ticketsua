@@ -29,6 +29,7 @@ gem 'jquery-turbolinks'
 gem 'responders'
 gem 'sidekiq'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'unobtrusive_flash', '>=3'
 
 
 # Use ActiveModel has_secure_password
