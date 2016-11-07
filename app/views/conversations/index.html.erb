@@ -11,6 +11,7 @@
       <% receiver = User.find(conversation.sender_id) %>
     <% end %>
     <%= link_to receiver.name,   conversation_messages_path(conversation)%>
+    <%= conversation.unstarred_count %>
    <% end %>
   <% end %>
   </div>

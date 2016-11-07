@@ -9,9 +9,9 @@ class Conversation < ActiveRecord::Base
 
   scope :between, -> (sender_id, receiver_id) do
     where("(conversations.sender_id = ? AND conversations.receiver_id = ?) OR (conversations.sender_id = ? AND conversations.receiver_id = ?)", sender_id,receiver_id, receiver_id, sender_id)
-  end
+  end 
 
-  scope :users_conversations, -> (user_id) do
-    where("conversations.sender_id = ? OR conversations.receiver_id = ?", sender_id)
+  def unstarred_count
+    messages.where('opened = ?', false).count
   end
 end

@@ -6,9 +6,11 @@ class ConversationsController < ApplicationController
    @conversations = Conversation.all
   end
 
-  def users_conversations
+  def messages
+    @conversation = Conversation.where('receiver_id = ?', conversation_params[:receiver_id])
     respond_with @conversations = current_user.conversations
   end
+
 
   def create
    if Conversation.between(params[:sender_id],params[:receiver_id]).present?

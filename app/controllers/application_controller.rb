@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
+  def after_sign_in_path_for(current_user)
+    if current_user.admin?
+      root_path
+    else
+      conversations_path
+    end
+  end
+
+
   protected
 
   def configure_permitted_parameters

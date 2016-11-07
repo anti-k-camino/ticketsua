@@ -15,7 +15,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
                             
-                  <li><a href="http://www.thinknetica.com">TICKETSUA</a></li>
+                  <li><%= link_to 'SIGN IN', new_user_session_path %></li>
+                  <li><%= link_to 'SIGN UP', new_user_registration_path %></li>
                   <li class="dropdown">
                      <a class="dropdown-toggle" data-toggle="dropdown">Про меня<b class="caret"></b></a>
                      <ul class="dropdown-menu">
@@ -26,10 +27,8 @@
                   </li>
                </ul>
                <% if user_signed_in? %>
-                <ul class="nav navbar-nav navbar-right">     
-                  <li><%= link_to 'My Conversations', users_conversations_conversations_path %></li>
+                <ul class="nav navbar-nav navbar-right">                  
                   <li><%= link_to 'Exit', destroy_user_session_path, method: :delete %></li>
-
                 </ul>                
                 <% end %>              
              
@@ -39,15 +38,11 @@
       </div>
    </div>
 </div>
-
-
-
-
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-<%= yield %>
+<div class="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+</div>
 
 </body>
 </html>

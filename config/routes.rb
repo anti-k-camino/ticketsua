@@ -10,9 +10,10 @@ Rails.application.routes.draw do
     patch 'unblock', on: :member
   end
 
-  resources :conversations do
-    get 'users_conversations', on: :collection
-    resources :messages
+  resources :conversations do    
+    resources :messages, shallow: true do
+      patch 'stare', on: :member
+    end
   end
 
   # Example of regular route:
