@@ -14,8 +14,9 @@
 .card-admin {
   border: 2px solid #e34a3e;
   border-radius: 5px;
-  margin: auto;
-  width: 50%; 
+  margin: auto;  
+  width: 50%;
+  margin-bottom: 5px; 
 }
 
 .blocked-user {
@@ -35,4 +36,8 @@
   width: 50%;  
   font-family: 'Sans';
   font-weight: bold;
+}
+
+.marg {
+  margin-bottom: 7px;
 }
