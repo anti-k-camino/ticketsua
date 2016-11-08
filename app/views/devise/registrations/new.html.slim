@@ -1,0 +1,29 @@
+.card.card-block.form-center
+  .card-title.title.text-center
+    |Sign up  
+  .card-text
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages! 
+      .field
+        = f.label :email, class: 'label-hidden'        
+        = f.email_field :email, placeholder: 'email', class: 'form-control', autofocus: true
+      .field
+        = f.label :name, class: 'label-hidden'        
+        = f.text_field :name, placeholder: 'name', class: 'form-control'
+      .field
+        = f.label :password, class: 'label-hidden'
+        -if @minimum_password_length
+          em has to be #{@minimum_password_length} characters minimum
+        br
+        = f.password_field :password, placeholder: 'password', class: 'form-control', autocomplete: "off"
+      .field
+        = f.label :password_confirmation, class: 'label-hidden'        
+        = f.text_field :password_confirmation, placeholder: 'password_confirmation', class: 'form-control'
+      .actions
+        = f.submit 'Sign up', class: 'btn btn-default btn-custom'
+      .text-center
+        = render "devise/shared/links"
+
+
+
+
