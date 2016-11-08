@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard/index'
 
-    resources :users do
+    resources :users, shallow: true do
       patch 'block', on: :member
       patch 'unblock', on: :member
     end
