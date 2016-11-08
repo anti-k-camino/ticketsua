@@ -4,4 +4,4 @@
   .card-text
     span.title Email
     | : #{@user.email} 
-    p=link_to 'Edit profile && credentials', edit_user_registration_path(current_user)   
+    =link_to 'Edit profile', edit_user_registration_path(current_user), class: 'btn btn-default btn-custom'   

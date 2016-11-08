@@ -5,10 +5,17 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  resources :users do
-    patch 'block', on: :member
-    patch 'unblock', on: :member
+
+  namespace :admin do
+    get 'dashboard/index'
+
+    resources :users do
+      patch 'block', on: :member
+      patch 'unblock', on: :member
+    end
   end
+
+  resources :users, only:[:show]
 
   resources :conversations do    
     resources :messages, shallow: true do

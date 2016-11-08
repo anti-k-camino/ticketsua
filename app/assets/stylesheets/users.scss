@@ -11,3 +11,28 @@
   font-family: 'Sans';
   font-weight: bold;
 }
+.card-admin {
+  border: 2px solid #e34a3e;
+  border-radius: 5px;
+  margin: auto;
+  width: 50%; 
+}
+
+.blocked-user {
+  background-color: #ff1834;
+  border-radius: 5px;
+  margin: auto;
+  width: 50%;
+  color: white;
+  font-family: 'Sans';
+  font-weight: bold;
+}
+
+.unblocked-user {
+  border: 2px solid #e34a3e;  
+  border-radius: 5px;
+  margin: auto;
+  width: 50%;  
+  font-family: 'Sans';
+  font-weight: bold;
+}

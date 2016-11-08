@@ -1,0 +1,5 @@
+- if user.blocked?
+  =render 'admin/users/blocked_user', user: user
+- else
+  =render 'admin/users/unblocked_user', user: user
+

@@ -1,0 +1,6 @@
+div id="user_#{user.id}"
+  .card.card-block.unblocked-user
+    h5.card-title #{user.name}
+    p.card-text
+      |Email : #{user.email}
+    =link_to "Block", block_admin_user_path(user), method: :patch,  class:'btn btn-danger', remote: true  

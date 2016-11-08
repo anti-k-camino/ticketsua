@@ -1,0 +1,6 @@
+div id="user_#{user.id}"
+  .card.card-block.blocked-user
+    h4.card-title #{user.name}
+    p.card-text
+      |Email : #{user.email} 
+    =link_to "Unblock", unblock_admin_user_path(user), method: :patch,  class:'btn btn-success', remote: true

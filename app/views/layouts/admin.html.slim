@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Ticketsua/ADMIN
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true 
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags  
+  body
+    .navbar.navbar-dark.bg-warning
+      .container
+        .collapse.navbar-toggleable-xs id="collapseEx2"          
+        a.navbar-brand ADMIN
+        .navbar-collapse.collapse.navbar-responsive-collapse            
+          ul.nav.navbar-nav.navbar-right
+            li.btn.btn-default= link_to "Users", admin_users_path
+            li.btn.btn-default= link_to "Sign out", destroy_user_session_path, method: :delete                
+          
+    .container
+      .unobtrusive-flash-container
+      = yield
