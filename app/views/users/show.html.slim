@@ -3,4 +3,5 @@
     |#{@user.name}'s profile    
   .card-text
     span.title Email
-    | : #{@user.email}    
+    | : #{@user.email} 
+    p=link_to 'Edit profile && credentials', edit_user_registration_path(current_user)   
