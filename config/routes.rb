@@ -17,7 +17,8 @@ Rails.application.routes.draw do
 
   resources :users, only:[:show]
 
-  resources :conversations do    
+  resources :conversations do 
+    get 'refresh_messages', on: :collection   
     resources :messages, shallow: true do
       patch 'open', on: :member
     end

@@ -7,7 +7,7 @@ class ConversationsController < ApplicationController
 
   def index
    @users = User.all
-   @conversations = Conversation.all
+   respond_with @conversations = Conversation.all
   end
 
   def messages
@@ -15,6 +15,12 @@ class ConversationsController < ApplicationController
     respond_with @conversations = current_user.conversations
   end
 
+  def refresh_messages
+    @conversations = Conversation.all
+    respond_to do |format|
+      format.js
+    end
+  end
 
   def create
     redirect_to conversation_messages_path(@conversation)

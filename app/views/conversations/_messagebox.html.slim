@@ -1,0 +1,13 @@
+.card.card-block
+  table.table.table-hover
+    thead
+      tr
+        th Username
+        th All
+        th Not opened 
+    .tbody               
+      -@conversations.each do |conversation|
+        -receiver = get_addresser(conversation)
+        tr                 
+          td= link_to receiver.name,  conversation_messages_path(conversation)                  
+          td= conversation.unstarred_count
