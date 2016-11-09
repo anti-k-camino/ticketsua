@@ -1,0 +1,12 @@
+.container
+  .row.convers  
+    =render @conversation.messages
+.container
+  .row
+    = form_for [@conversation, @message], html: {class: "ui reply form"}, remote: true do |f| 
+      .field
+        = f.label :body, class: 'label-hidden'
+        = f.text_area :body, class: "form-control"      
+      .actions
+        = f.submit "Add Reply", class: "btn btn-success"
+

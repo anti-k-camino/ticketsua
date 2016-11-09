@@ -1,26 +1,12 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_conversation, except:[:stare]
-  before_action :set_message, only:[:stare]
+  before_action :set_conversation
+  before_action :set_message, only:[:open]
 
   respond_to :js
 
-  def index
-    @messages = @conversation.messages
-    if @messages.length > 10
-      @over_ten = true
-      @messages = @messages[-10..-1]
-    end
-    if params[:m]
-      @over_ten = false
-      @messages = @conversation.messages
-    end
-    if @messages.last
-      if @messages.last.user_id != current_user.id
-         @messages.last.opened = true;
-      end
-    end
-
+  def index 
+    @author = User.find(@conversation.receiver_id)   
     @message = @conversation.messages.new
   end
 
@@ -29,14 +15,12 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = @conversation.messages.new(message_params)
-    if @message.save
-      redirect_to conversation_messages_path(@conversation)
-    end
+    respond_with @message = @conversation.messages.create(message_params.merge(user_id: current_user.id))
   end
 
-  def stare
-    @message.update(opened: true)
+  
+  def open
+    @message.open!
     respond_with @message
   end
 
@@ -47,10 +31,10 @@ class MessagesController < ApplicationController
   end
 
   def set_conversation
-    @conversation = Conversation.find(params[:conversation_id])
+    @conversation = Conversation.includes(:messages).find(params[:conversation_id])
   end
 
   def message_params
-    params.require(:message).permit(:body, :user_id)
+    params.require(:message).permit(:body)
   end
 end

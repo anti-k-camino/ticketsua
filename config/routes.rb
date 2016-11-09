@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :conversations do    
     resources :messages, shallow: true do
-      patch 'stare', on: :member
+      patch 'open', on: :member
     end
   end
 
