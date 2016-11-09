@@ -1,5 +1,5 @@
 $(document).ready(function () {    
-    setInterval(refreshPartial, 3000)
+    setInterval(refreshPartial, 600000)
 });
 
 
