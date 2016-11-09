@@ -13,8 +13,9 @@ html
         .navbar-collapse.collapse.navbar-responsive-collapse            
           ul.nav.navbar-nav.navbar-right
             -if user_signed_in?
-              li.btn.btn-default= link_to "Profile", user_path(current_user)
-              li.btn.btn-default= link_to "Sign out", destroy_user_session_path, method: :delete                
+              li= link_to "Conversations", conversations_path, class:'btn btn-primary'
+              li= link_to "Profile", user_path(current_user), class:'btn btn-primary'
+              li= link_to "Sign out", destroy_user_session_path, method: :delete, class:'btn btn-primary'                
             -else
               li.btn.btn-default= link_to "Register", new_user_registration_path
               li.btn.btn-default= link_to "Sign in", new_user_session_path

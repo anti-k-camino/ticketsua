@@ -1,4 +1,8 @@
-.receiver id= "mess_#{message.id}"
-  =message.body
-  p sent at #{message.created_at}
-  p=@author.name
+-if message.opened?
+  .receiver id= "mess_#{message.id}"
+    =message.body
+    p sent at #{message.created_at}
+    p=message.user.name
+- elsif message.persisted? && !message.opened?
+  .nontouch id="mess_#{message.id}"        
+    = button_to "Open", { action: 'open', id: "#{message.id}" }, method: :patch, remote: true, class: 'btn btn-success'

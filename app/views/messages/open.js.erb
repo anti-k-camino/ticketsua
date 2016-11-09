@@ -1,2 +1,3 @@
 alert("#mess_<%=@message.id%>");
 $("#mess_<%=@message.id%>").html("");
+$("#mess_<%=@message.id%>").append("<%= j render 'receiver', message: @message %>");

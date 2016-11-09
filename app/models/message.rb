@@ -7,4 +7,9 @@ class Message < ActiveRecord::Base
   def message_time
     created_at.strftime("%m/%d/%y at %l:%M %p")
   end
+
+  def open!
+    self.opened = true
+    self.save
+  end
 end

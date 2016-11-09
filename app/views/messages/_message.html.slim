@@ -5,11 +5,4 @@
       p sent at #{message.created_at}  
 -else
   .col-sm-8.col-sm-offset-3
-    -if message.opened?
-      .receiver id= "mess_#{message.id}"
-        =message.body
-        p sent at #{message.created_at}
-        p=message.user.name
-    -elsif !message.opened?
-      .nontouch id="mess_#{message.id}"        
-        = button_to "Open", { action: 'open', id: message.id }, method: :patch, remote: true, class: 'btn btn-success'
+    =render 'receiver', message: message

@@ -1,3 +1,26 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.sender { 
+  background: skyblue; 
+  padding: 15px;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: floralwhite;
+  border-radius: 8px;
+  margin: 5px;
+  width: 600px;  
+}
+
+.receiver {
+  position: relative; 
+  background: #cd1076;  
+  padding: 15px;
+  font-family: "Roboto";
+  font-weight: bold;
+  color: floralwhite;
+  border-radius: 8px;
+  margin: 5px;
+  margin-right: 40px;
+  width: 600px;  
+}

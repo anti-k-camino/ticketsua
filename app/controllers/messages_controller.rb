@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_conversation
+  before_action :set_conversation, except:[:open]
   before_action :set_message, only:[:open]
 
   respond_to :js
