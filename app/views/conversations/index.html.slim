@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-sm-6
+      .card.card-block.mailbox
+        .list-group.list-group-flush
+          -@users.each do |user|
+            unless user.id == current_user.id
+              .list-group-item.admessage
+                 = user.name
+                 = link_to 'Message me!', conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post, class: 'btn btn-primary adob-btn'
+    .col-sm-6
+      .card.card-block.messagebox
+        table.table.table-hover
+          thead
+            tr
+              th Uername
+              th All
+              th Not opened 
+          .tbody               
+              -@conversations.each do |conversation|
+                -receiver = get_addresser(conversation)
+                tr                 
+                  td= link_to receiver.name,  conversation_messages_path(conversation)
+                  td= conversation.unstarred_count
+                
