@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_blocked, only:[:create]
   before_action :set_conversation, except:[:open]
   before_action :set_message, only:[:open]
 
@@ -25,6 +26,10 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def check_blocked
+    redirect_to root_path, alert: "You are blocked" if current_user.blocked?
+  end
  
   def set_message
     @message = Message.find(params[:id])

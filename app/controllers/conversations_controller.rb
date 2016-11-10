@@ -2,7 +2,7 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_conversation, only:[:create]
-  #before_action :check_blocked, only: [:create]
+  before_action :check_blocked, only: [:create]
   respond_to :js
 
   def index
