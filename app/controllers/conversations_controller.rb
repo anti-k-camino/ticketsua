@@ -2,7 +2,7 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_conversation, only:[:create]
-
+  #before_action :check_blocked, only: [:create]
   respond_to :js
 
   def index
@@ -37,5 +37,9 @@ class ConversationsController < ApplicationController
     else
       @conversation = Conversation.create!(conversation_params)
     end
+  end
+
+  def check_blocked
+    redirect_to root_path, alert: "You are blocked" if current_user.blocked?
   end
 end

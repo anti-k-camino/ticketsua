@@ -7,6 +7,6 @@ module ConversationsHelper
       else
         receiver = User.find(conversation.sender_id) 
       end 
-    end
+    end    
   end
 end
