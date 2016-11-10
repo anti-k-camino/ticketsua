@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController 
-  before_action :set_user, except:[:index, :new, :ceate] 
+  before_action :set_user, except:[:index, :new, :create] 
   after_action :notify, only:[:block, :unblock]
   respond_to :js
   
@@ -12,10 +12,10 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def create
-    @user.new(user_params.merge(created_at: DateTime.now))
-    if @user.save
-      redirect_to admin_users_path
-    end
+    @user = User.new(user_params.merge(created_at: DateTime.now))
+    @user.skip_confirmation!
+    @user.save!
+    respond_with @user, location: -> { admin_users_path }   
   end
   
   def block

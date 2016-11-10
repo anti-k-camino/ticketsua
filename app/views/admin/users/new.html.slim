@@ -2,7 +2,7 @@
   .card-title.title.text-center
     |Sign up  
   .card-text
-    = form_for @user, url: admin_users_path(@user),  method: :post do |f|       
+    = form_for User.new, url: admin_users_path(@user),  method: :post do |f|       
       .field
         = f.label :email, class: 'label-hidden'        
         = f.email_field :email, placeholder: 'email', class: 'form-control', autofocus: true
