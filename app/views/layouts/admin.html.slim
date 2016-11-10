@@ -12,6 +12,7 @@ html
         a.navbar-brand ADMIN
         .navbar-collapse.collapse.navbar-responsive-collapse            
           ul.nav.navbar-nav.navbar-right
+            li.btn.btn-default= link_to "New User", new_admin_user_path
             li.btn.btn-default= link_to "Users", admin_users_path
             li.btn.btn-default= link_to "Sign out", destroy_user_session_path, method: :delete                
           

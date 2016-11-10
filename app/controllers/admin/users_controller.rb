@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController 
-  before_action :set_user, except:[:index] 
+  before_action :set_user, except:[:index, :new, :ceate] 
   after_action :notify, only:[:block, :unblock]
   respond_to :js
   
@@ -7,6 +7,17 @@ class Admin::UsersController < Admin::BaseController
     respond_with @users = User.where('admin = ?', false)
   end
 
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user.new(user_params.merge(created_at: DateTime.now))
+    if @user.save
+      redirect_to admin_users_path
+    end
+  end
+  
   def block
     @user.update(blocked: true)
     respond_with @user
@@ -25,10 +36,8 @@ class Admin::UsersController < Admin::BaseController
   def notify
     Admin::UserMailer.send(action_name.to_sym, @user).send(:deliver_later) unless @user.errors.any?
   end
-
-=begin 
-   Admin::UserMailer.block(@user).deliver_later unless @user.errors.any?
-=end
-
   
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end  
 end

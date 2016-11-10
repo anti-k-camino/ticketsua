@@ -1,0 +1,19 @@
+.card.card-block.form-center
+  .card-title.title.text-center
+    |Sign up  
+  .card-text
+    = form_for @user, url: admin_users_path(@user),  method: :post do |f|       
+      .field
+        = f.label :email, class: 'label-hidden'        
+        = f.email_field :email, placeholder: 'email', class: 'form-control', autofocus: true
+      .field
+        = f.label :name, class: 'label-hidden'        
+        = f.text_field :name, placeholder: 'name', class: 'form-control'
+      .field
+        = f.label :password, class: 'label-hidden'
+        -if @minimum_password_length
+          em has to be #{@minimum_password_length} characters minimum
+        br
+        = f.password_field :password, placeholder: 'password', class: 'form-control', autocomplete: "off"    
+      .actions
+        = f.submit 'Sign up', class: 'btn btn-default btn-custom'
